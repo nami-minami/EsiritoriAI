@@ -1,6 +1,5 @@
 from diffusers import StableDiffusionPipeline, EulerDiscreteScheduler
 import torch
-import gradio as gr
 
 
 class GenerateImage():
@@ -14,13 +13,6 @@ class GenerateImage():
             torch_dtype=torch.float16).to("cuda")
         return pipe
 
-    def LunchGradio(txt2img):
-        gr.Interface(
-                txt2img,
-                gr.Text(),
-                gr.Image(),
-                title='Stable Diffusion2.0 with Gradio UI'
-        ).launch(
-            share=True,
-            debug=True
-        )
+    def txt2img(pipe, txt):
+        image = pipe(txt, height=128, width=128).images
+        return image
