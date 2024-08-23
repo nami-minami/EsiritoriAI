@@ -2,7 +2,7 @@ from diffusers import StableDiffusionPipeline, EulerDiscreteScheduler
 import torch
 
 
-class GenerateImage():
+class GenerateImage:
     def makepipe(model_id="stabilityai/stable-diffusion-2-1"):
         pipe = StableDiffusionPipeline.from_pretrained(
             model_id,
